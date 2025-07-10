@@ -1,6 +1,7 @@
 import React from 'react';
 import { Building2, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,13 +14,13 @@ const Footer = () => {
       { label: 'Commercial Buildings', href: '#' },
     ],
     company: [
-      { label: 'About Us', href: '#' },
-      { label: 'Our Team', href: '#' },
-      { label: 'Careers', href: '#career' },
-      { label: 'News & Updates', href: '#' },
+      { label: 'About Us', href: '/about-us' },
+      { label: 'Our Work', href: '/our-work' },
+      { label: 'Careers', href: '/career' },
+      { label: 'Contact Us', href: '/contact-us' },
     ],
     resources: [
-      { label: 'Project Gallery', href: '#projects' },
+      { label: 'Project Gallery', href: '/projects' },
       { label: 'Safety Guidelines', href: '#' },
       { label: 'Quality Standards', href: '#' },
       { label: 'Documentation', href: '#' },
@@ -39,12 +40,12 @@ const Footer = () => {
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
+            <Link to="/" className="flex items-center space-x-2 mb-4">
               <Building2 className="h-8 w-8 text-primary" />
               <span className="text-2xl font-bold">
                 MrDGN <span className="text-primary">Constructions</span>
               </span>
-            </div>
+            </Link>
             <p className="text-secondary-foreground/80 mb-6">
               Building excellence for over 25 years. Your trusted partner for all construction needs.
             </p>
@@ -89,12 +90,21 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <a 
-                    href={link.href}
-                    className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
+                  {link.href.startsWith('/') ? (
+                    <Link 
+                      to={link.href}
+                      className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a 
+                      href={link.href}
+                      className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -106,12 +116,21 @@ const Footer = () => {
             <ul className="space-y-2 mb-6">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
-                  <a 
-                    href={link.href}
-                    className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm"
-                  >
-                    {link.label}
-                  </a>
+                  {link.href.startsWith('/') ? (
+                    <Link 
+                      to={link.href}
+                      className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a 
+                      href={link.href}
+                      className="text-secondary-foreground/80 hover:text-primary transition-colors text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -131,7 +150,7 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="border-t border-border/20 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
             {/* Copyright */}
             <div className="text-sm text-secondary-foreground/80">
               © {currentYear} MrDGN Constructions. All rights reserved.
@@ -155,7 +174,7 @@ const Footer = () => {
             </div>
 
             {/* Legal Links */}
-            <div className="flex items-center gap-4 text-sm">
+            <div className="flex flex-col sm:flex-row items-center gap-4 text-sm">
               <a href="#" className="text-secondary-foreground/80 hover:text-primary transition-colors">
                 Privacy Policy
               </a>

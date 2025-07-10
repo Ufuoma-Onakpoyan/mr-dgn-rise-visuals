@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,37 +17,38 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'Our Work', href: '#our-work' },
-    { label: 'Career', href: '#career' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact Us', href: '#contact' },
+    { label: 'About Us', href: '/about-us' },
+    { label: 'Our Work', href: '/our-work' },
+    { label: 'Career', href: '/career' },
+    { label: 'Projects', href: '/projects' },
+    { label: 'Contact Us', href: '/contact-us' },
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-    }`}>
-      <div className="container mx-auto px-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+      <div className="absolute inset-0 bg-white"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <Building2 className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold text-foreground">
+            <span className="text-2xl font-bold text-black">
               MrDGN <span className="text-primary">Constructions</span>
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-300 font-medium"
+                to={item.href}
+                className={`text-black hover:text-primary transition-colors duration-300 font-medium ${
+                  location.pathname === item.href ? 'text-primary' : ''
+                }`}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <Button className="btn-construction">
               Get Quote
@@ -58,7 +61,7 @@ const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground hover:text-primary"
+              className="text-black hover:text-primary"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -67,17 +70,19 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-sm border-t border-border">
+          <div className="md:hidden bg-white border-t border-border relative z-10">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-300"
+                  to={item.href}
+                  className={`block px-3 py-2 text-black hover:text-primary transition-colors duration-300 ${
+                    location.pathname === item.href ? 'text-primary' : ''
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
               <div className="px-3 py-2">
                 <Button className="btn-construction w-full">

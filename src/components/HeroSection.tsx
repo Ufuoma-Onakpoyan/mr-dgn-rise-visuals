@@ -1,8 +1,7 @@
 import React from 'react';
 import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/hero-construction.jpg';
-import teamImage from '@/assets/team-diverse.jpg';
+import heroImage from '@/assets/hero-cranes.jpg';
 
 const HeroSection = () => {
   return (
@@ -42,25 +41,32 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Team Image */}
+          {/* Construction Stats */}
           <div className="animate-scale-in">
-            <div className="relative">
-              <img 
-                src={teamImage} 
-                alt="Diverse construction team"
-                className="rounded-2xl shadow-construction hover-lift"
-              />
+            <div className="grid grid-cols-2 gap-6">
               {/* Floating stats */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl animate-float">
+              <div className="bg-white rounded-2xl p-6 shadow-xl animate-float">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary">500+</div>
                   <div className="text-sm text-muted-foreground">Projects Completed</div>
                 </div>
               </div>
-              <div className="absolute -top-6 -right-6 bg-white rounded-2xl p-6 shadow-xl animate-float" style={{animationDelay: '1s'}}>
+              <div className="bg-white rounded-2xl p-6 shadow-xl animate-float" style={{animationDelay: '1s'}}>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary">25+</div>
                   <div className="text-sm text-muted-foreground">Years Experience</div>
+                </div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 shadow-xl animate-float" style={{animationDelay: '2s'}}>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary">150+</div>
+                  <div className="text-sm text-muted-foreground">Expert Team</div>
+                </div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 shadow-xl animate-float" style={{animationDelay: '3s'}}>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary">99%</div>
+                  <div className="text-sm text-muted-foreground">Client Satisfaction</div>
                 </div>
               </div>
             </div>
