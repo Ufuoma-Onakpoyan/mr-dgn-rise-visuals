@@ -43,7 +43,7 @@ const Navigation = () => {
               <Link
                 key={item.label}
                 to={item.href}
-                className={`text-black hover:text-primary transition-colors duration-300 font-medium ${
+                className={`text-black hover:text-primary transition-colors duration-300 font-medium whitespace-nowrap ${
                   location.pathname === item.href ? 'text-primary' : ''
                 }`}
               >
@@ -76,7 +76,7 @@ const Navigation = () => {
                 <Link
                   key={item.label}
                   to={item.href}
-                  className={`block px-3 py-2 text-black hover:text-primary transition-colors duration-300 ${
+                  className={`block px-3 py-2 text-black hover:text-primary transition-colors duration-300 whitespace-nowrap ${
                     location.pathname === item.href ? 'text-primary' : ''
                   }`}
                   onClick={() => setIsOpen(false)}
