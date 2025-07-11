@@ -13,7 +13,7 @@ const HeroSection = () => {
         isOpen={isVideoModalOpen} 
         onClose={() => setIsVideoModalOpen(false)} 
       />
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-16">
       {/* Background with overlay */}
       <div className="absolute inset-0">
         <img 
