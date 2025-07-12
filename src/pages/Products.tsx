@@ -1,11 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Package, Layers, Zap, Shield, CheckCircle, Star } from 'lucide-react';
+import { Package, Layers, Zap, Shield, CheckCircle, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
+// Import product images
+import productBlocks from '@/assets/product-blocks.jpg';
+import productPavers from '@/assets/product-pavers.jpg';
+import productCement from '@/assets/product-cement.jpg';
+import productKerbs from '@/assets/product-kerbs.jpg';
+
 const Products = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const productImages = [
+    { src: productBlocks, alt: "High-Quality Solid Blocks", title: "Premium Concrete Blocks" },
+    { src: productPavers, alt: "Durable Interlocking Pavers", title: "Interlocking Pavers" },
+    { src: productCement, alt: "Premium Cement Products", title: "Cement & Concrete Mix" },
+    { src: productKerbs, alt: "Reliable Kerbs", title: "Precast Concrete Kerbs" }
+  ];
+
+  // Auto-advance carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % productImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [productImages.length]);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % productImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + productImages.length) % productImages.length);
+  };
+
+  const goToImage = (index: number) => {
+    setCurrentImageIndex(index);
+  };
+
   const products = [
     {
       icon: Package,
@@ -94,9 +129,85 @@ const Products = () => {
         </div>
       </section>
 
+      {/* Product Image Carousel */}
+      <section className="py-16 bg-muted/20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Our <span className="text-gradient">Product Gallery</span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Take a closer look at our premium construction materials
+            </p>
+          </div>
+          
+          <div className="relative max-w-4xl mx-auto">
+            {/* Carousel Container */}
+            <div className="relative overflow-hidden rounded-xl bg-white shadow-2xl">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+              >
+                {productImages.map((image, index) => (
+                  <div key={index} className="min-w-full relative">
+                    <div className="aspect-[16/10] relative">
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      <div className="absolute bottom-6 left-6 text-white">
+                        <h3 className="text-2xl font-bold">{image.title}</h3>
+                        <p className="text-white/90">{image.alt}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Navigation Arrows */}
+              <button
+                onClick={prevImage}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/30 transition-colors"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+              <button
+                onClick={nextImage}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/30 transition-colors"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Carousel Dots */}
+            <div className="flex justify-center mt-6 space-x-3">
+              {productImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToImage(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    currentImageIndex === index
+                      ? 'bg-primary scale-125'
+                      : 'bg-muted-foreground/40 hover:bg-muted-foreground/60'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Products Grid */}
       <section className="py-16">
         <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Product <span className="text-gradient">Specifications</span>
+            </h2>
+          </div>
+          
           <div className="grid lg:grid-cols-2 gap-12">
             {products.map((product, index) => (
               <Card key={index} className="card-elevated hover-lift">
