@@ -17,11 +17,12 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
+    { label: 'Home', href: '/' },
     { label: 'About Us', href: '/about-us' },
-    { label: 'Our Work', href: '/our-work' },
+    { label: 'Our Services', href: '/our-services' },
+    { label: 'Products', href: '/products' },
     { label: 'Career', href: '/career' },
     { label: 'Projects', href: '/projects' },
-    { label: 'Contact Us', href: '/contact-us' },
   ];
 
   return (
@@ -50,8 +51,8 @@ const Navigation = () => {
                 {item.label}
               </Link>
             ))}
-            <Button className="btn-construction">
-              Get Quote
+            <Button asChild className="btn-construction">
+              <Link to="/contact-us">Contact Us</Link>
             </Button>
           </div>
 
@@ -85,8 +86,8 @@ const Navigation = () => {
                 </Link>
               ))}
               <div className="px-3 py-2">
-                <Button className="btn-construction w-full">
-                  Get Quote
+                <Button asChild className="btn-construction w-full">
+                  <Link to="/contact-us">Contact Us</Link>
                 </Button>
               </div>
             </div>
