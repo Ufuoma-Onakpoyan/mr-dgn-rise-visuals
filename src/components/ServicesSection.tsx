@@ -47,9 +47,9 @@ const ServicesSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+          <h3 className="text-4xl lg:text-5xl font-bold mb-4">
             Our <span className="text-primary">Services</span>
-          </h2>
+          </h3>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Comprehensive construction services delivered by experienced professionals with cutting-edge technology and unwavering commitment to quality.
           </p>
