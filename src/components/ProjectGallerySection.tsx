@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import projectBridge from '@/assets/project-bridge.jpg';
@@ -7,6 +7,8 @@ import projectHighrise from '@/assets/project-highrise.jpg';
 import projectResidential from '@/assets/project-residential.jpg';
 
 const ProjectGallerySection = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
   const projects = [
     {
       image: projectBridge,
@@ -30,6 +32,19 @@ const ProjectGallerySection = () => {
     }
   ];
 
+  // Auto-slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % projects.length);
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [projects.length]);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   return (
     <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-6">
@@ -42,22 +57,46 @@ const ProjectGallerySection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {projects.map((project, index) => (
-            <div key={index} className="group relative overflow-hidden rounded-lg shadow-lg hover-lift">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 text-white">
-                  <h3 className="font-semibold text-lg">{project.title}</h3>
-                  <p className="text-sm text-white/80">{project.description}</p>
+        {/* Carousel Container */}
+        <div className="relative max-w-4xl mx-auto mb-8">
+          <div className="overflow-hidden rounded-lg shadow-lg">
+            <div 
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {projects.map((project, index) => (
+                <div key={index} className="w-full flex-shrink-0 relative">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-64 md:h-96 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                    <div className="absolute bottom-6 left-6 text-white">
+                      <h3 className="font-semibold text-xl md:text-2xl mb-2">{project.title}</h3>
+                      <p className="text-sm md:text-base text-white/90">{project.description}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+          
+          {/* Navigation Dots */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {projects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  currentSlide === index 
+                    ? 'bg-primary scale-110' 
+                    : 'bg-white/50 hover:bg-white/70'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="text-center">

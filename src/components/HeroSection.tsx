@@ -13,9 +13,9 @@ const HeroSection = () => {
         isOpen={isVideoModalOpen} 
         onClose={() => setIsVideoModalOpen(false)} 
       />
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden mx-4 md:mx-6 lg:mx-8 rounded-lg">
-      {/* Background with overlay */}
-      <div className="absolute inset-0">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background with overlay - full width */}
+      <div className="absolute inset-0 -mx-4 md:-mx-6 lg:-mx-8">
         <img 
           src={heroImage} 
           alt="Construction site with diverse workers and heavy machinery"
@@ -25,7 +25,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-6 sm:px-8 lg:px-4 relative z-10">
+      <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 my-4 md:my-6 lg:my-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Text Content */}
           <div className="text-white animate-slide-up px-2 sm:px-4 lg:px-0">
