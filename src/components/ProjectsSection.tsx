@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink, Calendar, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import projectHighrise from '@/assets/project-highrise.jpg';
 import projectResidential from '@/assets/project-residential.jpg';
 import projectCommercial from '@/assets/project-commercial.jpg';
 import projectBridge from '@/assets/project-bridge.jpg';
+import projectWarehouse from '@/assets/project-warehouse.jpg';
+import projectEducation from '@/assets/project-education.jpg';
+import projectHealthcare from '@/assets/project-healthcare.jpg';
 
 const ProjectsSection = () => {
   const [currentProject, setCurrentProject] = useState(0);
@@ -59,6 +63,36 @@ const ProjectsSection = () => {
       location: 'City Center',
       duration: '18 months',
       value: '$95M',
+    },
+    {
+      id: 5,
+      title: 'Industrial Warehouse Complex',
+      description: 'Modern logistics and distribution center with advanced automated systems.',
+      image: projectWarehouse,
+      category: 'Industrial',
+      location: 'Manufacturing District',
+      duration: '20 months',
+      value: '$75M',
+    },
+    {
+      id: 6,
+      title: 'University Campus Expansion',
+      description: 'Educational facility expansion with state-of-the-art learning environments.',
+      image: projectEducation,
+      category: 'Educational',
+      location: 'Academic Quarter',
+      duration: '28 months',
+      value: '$110M',
+    },
+    {
+      id: 7,
+      title: 'Medical Center Complex',
+      description: 'Advanced healthcare facility with specialized medical equipment and patient care areas.',
+      image: projectHealthcare,
+      category: 'Healthcare',
+      location: 'Medical District',
+      duration: '32 months',
+      value: '$180M',
     },
   ];
 
@@ -158,7 +192,7 @@ const ProjectsSection = () => {
         </div>
 
         {/* Project Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {projects.map((project, index) => (
             <Card key={project.id} className="card-elevated hover-lift group animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
               <div className="relative overflow-hidden rounded-t-lg">
@@ -184,9 +218,11 @@ const ProjectsSection = () => {
                   <span>{project.duration}</span>
                   <span className="font-semibold text-primary">{project.value}</span>
                 </div>
-                <Button variant="outline" size="sm" className="w-full group">
-                  View Details
-                  <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <Button variant="outline" size="sm" className="w-full group" asChild>
+                  <Link to={`/project/${project.id}`}>
+                    View Details
+                    <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </Button>
               </CardContent>
             </Card>

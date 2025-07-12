@@ -5,30 +5,48 @@ import projectBridge from '@/assets/project-bridge.jpg';
 import projectCommercial from '@/assets/project-commercial.jpg';
 import projectHighrise from '@/assets/project-highrise.jpg';
 import projectResidential from '@/assets/project-residential.jpg';
+import projectWarehouse from '@/assets/project-warehouse.jpg';
+import projectEducation from '@/assets/project-education.jpg';
+import projectHealthcare from '@/assets/project-healthcare.jpg';
 
 const ProjectGallerySection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   
   const projects = [
     {
-      image: projectBridge,
-      title: "Modern Bridge Construction",
-      description: "Infrastructure project completed in 2023"
-    },
-    {
-      image: projectCommercial,
-      title: "Commercial Complex",
-      description: "Mixed-use development project"
-    },
-    {
       image: projectHighrise,
-      title: "High-Rise Building",
-      description: "Luxury residential tower"
+      title: "Skyline Tower Complex",
+      description: "45-story mixed-use development"
     },
     {
       image: projectResidential,
-      title: "Residential Development",
-      description: "Family housing community"
+      title: "Heritage Residential Community",
+      description: "Sustainable residential complex"
+    },
+    {
+      image: projectCommercial,
+      title: "Corporate Business Center",
+      description: "State-of-the-art office complex"
+    },
+    {
+      image: projectBridge,
+      title: "Metro Bridge Infrastructure",
+      description: "Critical transportation infrastructure"
+    },
+    {
+      image: projectWarehouse,
+      title: "Industrial Warehouse Complex",
+      description: "Modern logistics distribution center"
+    },
+    {
+      image: projectEducation,
+      title: "University Campus Expansion",
+      description: "Educational facility expansion"
+    },
+    {
+      image: projectHealthcare,
+      title: "Medical Center Complex",
+      description: "Advanced healthcare facility"
     }
   ];
 
@@ -83,15 +101,15 @@ const ProjectGallerySection = () => {
           </div>
           
           {/* Navigation Dots */}
-          <div className="flex justify-center mt-6 space-x-2">
+          <div className="flex justify-center mt-6 space-x-3">
             {projects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   currentSlide === index 
-                    ? 'bg-primary scale-110' 
-                    : 'bg-white/50 hover:bg-white/70'
+                    ? 'bg-primary scale-110 shadow-lg' 
+                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

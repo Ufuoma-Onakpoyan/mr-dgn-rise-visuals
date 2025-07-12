@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { Link } from 'react-router-dom';
 import { Package, Layers, Zap, Shield, CheckCircle, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -245,8 +246,8 @@ const Products = () => {
                     </div>
                   </div>
 
-                  <Button className="w-full btn-construction">
-                    Request Quote
+                  <Button className="w-full btn-construction" asChild>
+                    <Link to="/contact-us">Request Quote</Link>
                   </Button>
                 </CardContent>
               </Card>
