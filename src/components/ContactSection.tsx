@@ -1,38 +1,103 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactSection = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    projectType: '',
+    message: ''
+  });
+
   const contactInfo = [
     {
       icon: Phone,
       title: 'Phone',
-      content: '+1 (555) 123-4567',
+      content: '+2348135324467',
       description: 'Call us for immediate assistance'
     },
     {
       icon: Mail,
       title: 'Email',
-      content: 'info@mrdgnconstructions.com',
+      content: 'constructions@mrdgngroup.com',
       description: 'Send us your project details'
     },
     {
       icon: MapPin,
       title: 'Address',
-      content: '123 Construction Ave, Builder City, BC 12345',
+      content: 'Lagos, Nigeria',
       description: 'Visit our main office'
     },
     {
       icon: Clock,
       title: 'Business Hours',
-      content: 'Mon - Fri: 8:00 AM - 6:00 PM',
+      content: 'Mon - Fri: 8:00 AM - 6:00 PM WAT',
       description: 'We\'re here when you need us'
     }
   ];
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
+      toast({
+        title: "Error",
+        description: "Please fill in all required fields",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours.",
+      });
+
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        projectType: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="py-20 bg-background">
@@ -94,47 +159,86 @@ const ContactSection = () => {
                   Fill out the form below and we'll get back to you within 24 hours.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="John" />
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName">First Name *</Label>
+                      <Input 
+                        id="firstName" 
+                        placeholder="John" 
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName">Last Name *</Label>
+                      <Input 
+                        id="lastName" 
+                        placeholder="Doe" 
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Doe" />
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email *</Label>
+                      <Input 
+                        id="email" 
+                        type="email" 
+                        placeholder="john@example.com" 
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Phone</Label>
+                      <Input 
+                        id="phone" 
+                        type="tel" 
+                        placeholder="+234 8XX XXXX XXX" 
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                      />
+                    </div>
                   </div>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="john@example.com" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone</Label>
-                    <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" />
-                  </div>
-                </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="projectType">Project Type</Label>
-                  <Input id="projectType" placeholder="e.g., Residential, Commercial, Infrastructure" />
-                </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="projectType">Project Type</Label>
+                    <Input 
+                      id="projectType" 
+                      placeholder="e.g., Residential, Commercial, Infrastructure" 
+                      value={formData.projectType}
+                      onChange={handleInputChange}
+                    />
+                  </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="Tell us about your project..."
-                    className="min-h-32"
-                  />
-                </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message *</Label>
+                    <Textarea 
+                      id="message" 
+                      placeholder="Tell us about your project..."
+                      className="min-h-32"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
 
-                <Button className="btn-construction w-full group">
-                  Send Message
-                  <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                  <Button 
+                    type="submit" 
+                    className="btn-construction w-full group" 
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </form>
               </CardContent>
             </Card>
           </div>
@@ -144,10 +248,10 @@ const ContactSection = () => {
         <div className="mt-16 text-center bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 text-white">
           <h3 className="text-2xl font-bold mb-2">Emergency Construction Services</h3>
           <p className="text-primary-foreground/90 mb-4">
-            Available 24/7 for urgent construction and safety issues
+            Available 24/7 for urgent construction and safety issues across Nigeria
           </p>
           <Button variant="outline" size="lg" className="bg-white text-primary hover:bg-white/90">
-            Call Emergency Line: +1 (555) 911-BUILD
+            Call Emergency Line: +2348135324467
           </Button>
         </div>
       </div>

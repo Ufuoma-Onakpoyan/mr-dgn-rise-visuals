@@ -1,7 +1,8 @@
 import React from 'react';
-import { Building2, Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import mrdgnLogo from '@/assets/mrdgn-logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -40,29 +41,30 @@ const Footer = () => {
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center space-x-2 mb-4">
-              <Building2 className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold">
-                MrDGN <span className="text-primary">Constructions</span>
-              </span>
+            <Link to="/" className="flex items-center mb-4">
+              <img 
+                src={mrdgnLogo} 
+                alt="MR DGN Constructions" 
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="text-secondary-foreground/80 mb-6">
-              Building excellence for over 25 years. Your trusted partner for all construction needs.
+              Building excellence across Nigeria for over 25 years. Your trusted partner for all construction needs.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3 text-sm">
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>+1 (555) 123-4567</span>
+                <span>+2348135324467</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary" />
-                <span>info@mrdgnconstructions.com</span>
+                <span>constructions@mrdgngroup.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span>123 Construction Ave, Builder City, BC 12345</span>
+                <span>Lagos, Nigeria</span>
               </div>
             </div>
           </div>
@@ -153,7 +155,7 @@ const Footer = () => {
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
             {/* Copyright */}
             <div className="text-sm text-secondary-foreground/80">
-              © {currentYear} MrDGN Constructions. All rights reserved.
+              © {currentYear} MR DGN Constructions. All rights reserved.
             </div>
 
             {/* Social Links */}

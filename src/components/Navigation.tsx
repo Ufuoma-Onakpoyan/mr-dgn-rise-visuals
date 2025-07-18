@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Building2 } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
+import mrdgnLogo from '@/assets/mrdgn-logo.png';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,10 +32,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Building2 className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold text-black">
-              MrDGN <span className="text-primary">Constructions</span>
-            </span>
+            <img 
+              src={mrdgnLogo} 
+              alt="MR DGN Constructions" 
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
