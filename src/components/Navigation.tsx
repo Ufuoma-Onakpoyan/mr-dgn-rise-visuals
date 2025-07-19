@@ -26,8 +26,8 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
-      <div className="absolute inset-0 bg-white"></div>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50 shadow-md">
+      <div className="absolute inset-0 bg-gray-50"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -35,7 +35,7 @@ const Navigation = () => {
             <img 
               src="/lovable-uploads/1266e7a6-9389-4de2-9bc6-66d9b172d35c.png" 
               alt="MR DGN Constructions" 
-              className="h-10 w-auto"
+              className="h-14 w-auto"
             />
           </Link>
 
@@ -72,7 +72,7 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-white border-t border-border relative z-10">
+          <div className="md:hidden bg-gray-50 border-t border-border relative z-10">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <Link

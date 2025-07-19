@@ -142,7 +142,7 @@ const ContactSection = () => {
             <div className="mt-8">
               <div className="w-full h-48 bg-muted rounded-2xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dRWTgaih_KQTCk&q=Okpanam,+Delta+State,+Nigeria"
+                  src="https://maps.app.goo.gl/zMkaY1V3hjHanmns6"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -151,7 +151,7 @@ const ContactSection = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                   title="MR DGN Construction Location"
                   className="cursor-pointer"
-                  onClick={() => window.open('https://www.google.com/maps/search/MR+DGN+Construction+and+Developers+LTD,+Okpanam,+Delta+State', '_blank')}
+                  onClick={() => window.open('https://maps.app.goo.gl/zMkaY1V3hjHanmns6', '_blank')}
                 />
               </div>
             </div>
