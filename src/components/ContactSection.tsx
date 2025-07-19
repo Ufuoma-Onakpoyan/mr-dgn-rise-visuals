@@ -36,7 +36,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: 'Address',
-      content: 'Lagos, Nigeria',
+      content: 'MR DGN Construction and Developers LTD, Okpanam, Delta State',
       description: 'Visit our main office'
     },
     {
@@ -138,14 +138,21 @@ const ContactSection = () => {
               })}
             </div>
 
-            {/* Map Placeholder */}
+            {/* Google Map */}
             <div className="mt-8">
-              <div className="w-full h-48 bg-muted rounded-2xl flex items-center justify-center">
-                <div className="text-center text-muted-foreground">
-                  <MapPin className="h-8 w-8 mx-auto mb-2" />
-                  <p>Interactive Map</p>
-                  <p className="text-sm">Coming Soon</p>
-                </div>
+              <div className="w-full h-48 bg-muted rounded-2xl overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dRWTgaih_KQTCk&q=Okpanam,+Delta+State,+Nigeria"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="MR DGN Construction Location"
+                  className="cursor-pointer"
+                  onClick={() => window.open('https://www.google.com/maps/search/MR+DGN+Construction+and+Developers+LTD,+Okpanam,+Delta+State', '_blank')}
+                />
               </div>
             </div>
           </div>

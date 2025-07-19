@@ -32,7 +32,7 @@ const ProjectsSection = () => {
       category: 'High-Rise',
       location: 'Downtown Metropolitan',
       duration: '36 months',
-      value: '$150M',
+      value: '₦150M',
     },
     {
       id: 2,
@@ -42,7 +42,7 @@ const ProjectsSection = () => {
       category: 'Residential',
       location: 'Suburban District',
       duration: '24 months',
-      value: '$85M',
+      value: '₦85M',
     },
     {
       id: 3,
@@ -52,7 +52,7 @@ const ProjectsSection = () => {
       category: 'Commercial',
       location: 'Business Park',
       duration: '30 months',
-      value: '$120M',
+      value: '₦120M',
     },
     {
       id: 4,
@@ -62,7 +62,7 @@ const ProjectsSection = () => {
       category: 'Infrastructure',
       location: 'City Center',
       duration: '18 months',
-      value: '$95M',
+      value: '₦95M',
     },
     {
       id: 5,
@@ -72,7 +72,7 @@ const ProjectsSection = () => {
       category: 'Industrial',
       location: 'Manufacturing District',
       duration: '20 months',
-      value: '$75M',
+      value: '₦75M',
     },
     {
       id: 6,
@@ -82,7 +82,7 @@ const ProjectsSection = () => {
       category: 'Educational',
       location: 'Academic Quarter',
       duration: '28 months',
-      value: '$110M',
+      value: '₦110M',
     },
     {
       id: 7,
@@ -92,7 +92,7 @@ const ProjectsSection = () => {
       category: 'Healthcare',
       location: 'Medical District',
       duration: '32 months',
-      value: '$180M',
+      value: '₦180M',
     },
   ];
 

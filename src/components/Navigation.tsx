@@ -33,7 +33,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src={mrdgnLogo} 
+              src="/lovable-uploads/1266e7a6-9389-4de2-9bc6-66d9b172d35c.png" 
               alt="MR DGN Constructions" 
               className="h-10 w-auto"
             />

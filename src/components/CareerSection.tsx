@@ -11,7 +11,7 @@ const CareerSection = () => {
       department: 'Project Management',
       location: 'New York, NY',
       type: 'Full-time',
-      salary: '$95k - $120k',
+      salary: '₦95k - ₦120k',
       description: 'Lead large-scale construction projects from planning to completion.',
       requirements: ['10+ years experience', 'PMP Certification', 'Team Leadership']
     },
@@ -20,7 +20,7 @@ const CareerSection = () => {
       department: 'Safety & Compliance',
       location: 'Los Angeles, CA',
       type: 'Full-time',
-      salary: '$75k - $95k',
+      salary: '₦75k - ₦95k',
       description: 'Ensure all safety protocols and compliance standards are met on construction sites.',
       requirements: ['Safety Certification', '5+ years experience', 'Risk Assessment']
     },
@@ -29,7 +29,7 @@ const CareerSection = () => {
       department: 'Engineering',
       location: 'Chicago, IL',
       type: 'Full-time',
-      salary: '$80k - $105k',
+      salary: '₦80k - ₦105k',
       description: 'Design and analyze structural systems for high-rise and commercial buildings.',
       requirements: ['PE License', 'Structural Analysis', 'CAD Proficiency']
     }

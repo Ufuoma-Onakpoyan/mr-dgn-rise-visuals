@@ -118,9 +118,19 @@ const ProjectGallerySection = () => {
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="btn-construction group">
-            <Instagram className="mr-2 h-5 w-5" />
-            Follow Us on Instagram
+          <Button 
+            size="lg" 
+            className="btn-construction group"
+            asChild
+          >
+            <a 
+              href="https://www.instagram.com/mrdgn_constructions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Instagram className="mr-2 h-5 w-5" />
+              Follow Us on Instagram
+            </a>
           </Button>
         </div>
       </div>

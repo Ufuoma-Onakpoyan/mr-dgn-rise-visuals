@@ -41,13 +41,12 @@ const Footer = () => {
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center mb-4">
-              <img 
-                src={mrdgnLogo} 
-                alt="MR DGN Constructions" 
-                className="h-12 w-auto"
-              />
-            </Link>
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">M</span>
+              </div>
+              <span className="font-bold text-foreground text-xl">MrDGN Construction</span>
+            </div>
             <p className="text-secondary-foreground/80 mb-6">
               Building excellence across Nigeria for over 25 years. Your trusted partner for all construction needs.
             </p>
@@ -64,7 +63,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span>Lagos, Nigeria</span>
+                <span>Okpanam, Delta State</span>
               </div>
             </div>
           </div>
