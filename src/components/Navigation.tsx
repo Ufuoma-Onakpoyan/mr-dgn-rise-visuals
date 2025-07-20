@@ -35,7 +35,7 @@ const Navigation = () => {
             <img 
               src="/lovable-uploads/2485c1b8-1e34-41b5-89f0-3708377adee1.png" 
               alt="MR DGN Constructions" 
-              className="h-full w-auto transition-all duration-300 hover:scale-105 scale-150"
+              className="h-full w-auto transition-all duration-300 hover:scale-175 scale-150"
               style={{ 
                 filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.15)) contrast(1.1) brightness(1.05)',
                 fontWeight: 'bold'
