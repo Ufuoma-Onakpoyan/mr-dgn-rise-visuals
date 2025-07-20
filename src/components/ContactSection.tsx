@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -142,7 +143,7 @@ const ContactSection = () => {
             <div className="mt-8">
               <div className="w-full h-48 bg-muted rounded-2xl overflow-hidden">
                 <iframe
-                  src="https://maps.app.goo.gl/zMkaY1V3hjHanmns6"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.123456789!2d6.734567!3d6.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sOkpanam%2C%20Delta%20State%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1234567890"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -205,24 +206,46 @@ const ContactSection = () => {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone</Label>
-                      <Input 
-                        id="phone" 
-                        type="tel" 
-                        placeholder="+234 8XX XXXX XXX" 
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                      />
+                      <div className="flex gap-2">
+                        <Select defaultValue="+234">
+                          <SelectTrigger className="w-24">
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="+234">🇳🇬 +234</SelectItem>
+                            <SelectItem value="+1">🇺🇸 +1</SelectItem>
+                            <SelectItem value="+44">🇬🇧 +44</SelectItem>
+                            <SelectItem value="+233">🇬🇭 +233</SelectItem>
+                            <SelectItem value="+27">🇿🇦 +27</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <Input 
+                          id="phone" 
+                          type="tel" 
+                          placeholder="8XX XXXX XXX" 
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          className="flex-1"
+                        />
+                      </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="projectType">Project Type</Label>
-                    <Input 
-                      id="projectType" 
-                      placeholder="e.g., Residential, Commercial, Infrastructure" 
-                      value={formData.projectType}
-                      onChange={handleInputChange}
-                    />
+                    <Select onValueChange={(value) => setFormData(prev => ({ ...prev, projectType: value }))}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your project type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="residential">🏠 Residential Construction</SelectItem>
+                        <SelectItem value="commercial">🏢 Commercial Building</SelectItem>
+                        <SelectItem value="infrastructure">🛣️ Infrastructure & Roads</SelectItem>
+                        <SelectItem value="renovation">🔨 Renovation & Remodeling</SelectItem>
+                        <SelectItem value="consultation">💼 Design Consultation</SelectItem>
+                        <SelectItem value="other">📋 Other (Please specify in message)</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   <div className="space-y-2">

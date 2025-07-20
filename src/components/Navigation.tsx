@@ -31,11 +31,11 @@ const Navigation = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center h-full py-2">
             <img 
-              src="/lovable-uploads/1266e7a6-9389-4de2-9bc6-66d9b172d35c.png" 
+              src="/lovable-uploads/2485c1b8-1e34-41b5-89f0-3708377adee1.png" 
               alt="MR DGN Constructions" 
-              className="h-14 w-auto"
+              className="h-full w-auto max-h-12"
             />
           </Link>
 

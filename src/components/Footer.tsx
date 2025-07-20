@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import mrdgnLogo from '@/assets/mrdgn-logo.png';
+import NewsletterModal from './NewsletterModal';
 
 const Footer = () => {
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
@@ -142,7 +143,11 @@ const Footer = () => {
               <p className="text-sm text-secondary-foreground/80 mb-3">
                 Get project updates and construction tips
               </p>
-              <Button className="btn-construction w-full" size="sm">
+              <Button 
+                className="btn-construction w-full" 
+                size="sm"
+                onClick={() => setIsNewsletterModalOpen(true)}
+              >
                 Subscribe
               </Button>
             </div>
@@ -186,6 +191,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      
+      <NewsletterModal 
+        isOpen={isNewsletterModalOpen} 
+        onClose={() => setIsNewsletterModalOpen(false)} 
+      />
     </footer>
   );
 };
