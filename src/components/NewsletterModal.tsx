@@ -43,11 +43,11 @@ const NewsletterModal = ({ isOpen, onClose }: NewsletterModalProps) => {
       const { error } = await supabase.functions.invoke('send-contact-email', {
         body: {
           firstName: formData.name,
-          lastName: '',
+          lastName: 'Newsletter',
           email: formData.email,
           phone: '',
           projectType: 'Newsletter Subscription',
-          message: `Newsletter subscription request from ${formData.name}`
+          message: `Newsletter subscription request from ${formData.name} (${formData.email})`
         }
       });
 

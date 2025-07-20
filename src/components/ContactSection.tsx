@@ -143,15 +143,15 @@ const ContactSection = () => {
             <div className="mt-8">
               <div className="w-full h-48 bg-muted rounded-2xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.123456789!2d6.734567!3d6.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sOkpanam%2C%20Delta%20State%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.4820954287426!2d6.742639!3d6.210831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1043792aa9b9b9b9%3A0x9876543210987654!2sMR%20DGN%20Construction%20%26%20Developers%20Ltd%2C%20Okpanam%2C%20Delta%20State!5e0!3m2!1sen!2sng!4v1640000000000!5m2!1sen!2sng&q=MR+DGN+Construction+Developers+Ltd+Okpanam+Delta+State"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="MR DGN Construction Location"
-                  className="cursor-pointer"
+                  title="MR DGN Construction & Developers Ltd Location"
+                  className="cursor-pointer hover:brightness-105 transition-all duration-300"
                   onClick={() => window.open('https://maps.app.goo.gl/zMkaY1V3hjHanmns6', '_blank')}
                 />
               </div>
