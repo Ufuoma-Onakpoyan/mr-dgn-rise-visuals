@@ -31,11 +31,11 @@ const Navigation = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center h-full py-2">
+          <Link to="/" className="flex items-center h-full py-1">
             <img 
               src="/lovable-uploads/2485c1b8-1e34-41b5-89f0-3708377adee1.png" 
               alt="MR DGN Constructions" 
-              className="h-full w-auto max-h-14 transition-all duration-300 hover:scale-105 animate-pulse"
+              className="h-full w-auto transition-all duration-300 hover:scale-105"
               style={{ 
                 filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.15)) contrast(1.1) brightness(1.05)',
                 fontWeight: 'bold'
