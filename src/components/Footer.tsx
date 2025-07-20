@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import NewsletterModal from './NewsletterModal';
 
 const Footer = () => {
-  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = React.useState(false);
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
