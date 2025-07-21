@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'luc
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import NewsletterModal from './NewsletterModal';
+import mrdgnLogo from '@/assets/mrdgn-logo-full.png';
 
 const Footer = () => {
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = React.useState(false);
@@ -42,11 +43,8 @@ const Footer = () => {
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
-              </div>
-              <span className="font-bold text-foreground text-xl">MrDGN Construction</span>
+            <div className="mb-4">
+              <img src="/lovable-uploads/a7577d6b-f00d-4bba-b381-f68beacb436c.png" alt="MR DGN Constructions" className="h-12 w-auto" />
             </div>
             <p className="text-secondary-foreground/80 mb-6">
               Building excellence across Nigeria for over 25 years. Your trusted partner for all construction needs.

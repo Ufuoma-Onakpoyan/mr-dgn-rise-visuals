@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
-import mrdgnLogo from '@/assets/mrdgn-logo.png';
+import mrdgnLogo from '@/assets/mrdgn-logo-full.png';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,7 +36,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center h-full py-1">
-            <img src="/lovable-uploads/2485c1b8-1e34-41b5-89f0-3708377adee1.png" alt="MR DGN Constructions" style={{
+            <img src="/lovable-uploads/a7577d6b-f00d-4bba-b381-f68beacb436c.png" alt="MR DGN Constructions" style={{
             filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.15)) contrast(1.1) brightness(1.05)',
             fontWeight: 'bold'
           }} className="h-full w-auto transition-all duration-300 hover:scale-200 scale-150" />
