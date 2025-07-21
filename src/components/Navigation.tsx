@@ -39,7 +39,7 @@ const Navigation = () => {
             <img src="/lovable-uploads/a7577d6b-f00d-4bba-b381-f68beacb436c.png" alt="MR DGN Constructions" style={{
             filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.15)) contrast(1.1) brightness(1.05)',
             fontWeight: 'bold'
-          }} className="h-full w-auto transition-all duration-300 hover:scale-200 scale-150" />
+          }} className="h-10 w-auto transition-all duration-300 hover:scale-105" />
           </Link>
 
           {/* Desktop Navigation */}
