@@ -4,10 +4,13 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import NewsletterModal from './NewsletterModal';
 import mrdgnLogo from '@/assets/mrdgn-logo-full.png';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const Footer = () => {
   const [isNewsletterModalOpen, setIsNewsletterModalOpen] = React.useState(false);
   const currentYear = new Date().getFullYear();
+  
+  const footerRef = useScrollReveal({ direction: 'up', delay: 100 });
 
   const footerLinks = {
     services: [
@@ -39,7 +42,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-secondary text-secondary-foreground">
-      <div className="container mx-auto px-4 py-16">
+      <div ref={footerRef} className="container mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">

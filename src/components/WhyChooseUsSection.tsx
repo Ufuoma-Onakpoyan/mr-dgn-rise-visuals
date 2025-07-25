@@ -2,13 +2,18 @@ import React from 'react';
 import { Award, Clock, Users, Shield, CheckCircle, Star } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import teamImage from '@/assets/team-diverse.jpg';
+import { useScrollReveal, useStaggeredScrollReveal } from '@/hooks/useScrollReveal';
 
 const WhyChooseUsSection = () => {
+  const headerRef = useScrollReveal({ direction: 'up', delay: 100 });
+  const imageRef = useScrollReveal({ direction: 'left', delay: 200 });
+  const reasonsRef = useStaggeredScrollReveal(6, { direction: 'right', delay: 300 });
+  
   const reasons = [
     {
       icon: Award,
       title: "25+ Years Experience",
-      description: "Over two decades of proven expertise in construction industry"
+      description: "Over two decades of proven expertise in Nigeria's construction industry"
     },
     {
       icon: Clock,
@@ -40,18 +45,18 @@ const WhyChooseUsSection = () => {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
+        <div ref={headerRef} className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Why Choose <span className="text-gradient">MrDGN Constructions</span>
+            Why Choose <span className="text-gradient">MR DGN Constructions</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Experience the difference that comes with working with industry leaders committed to excellence.
+            Experience the difference that comes with working with Nigeria's construction industry leaders committed to excellence.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="order-2 lg:order-1">
+          <div ref={imageRef} className="order-2 lg:order-1">
             <img
               src={teamImage}
               alt="Diverse construction team working together"
@@ -60,7 +65,7 @@ const WhyChooseUsSection = () => {
           </div>
 
           {/* Reasons Grid */}
-          <div className="order-1 lg:order-2 grid md:grid-cols-2 gap-6">
+          <div ref={reasonsRef} className="order-1 lg:order-2 grid md:grid-cols-2 gap-6">
             {reasons.map((reason, index) => (
               <Card key={index} className="card-elevated hover-lift">
                 <CardHeader className="pb-3">

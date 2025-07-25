@@ -8,6 +8,8 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import { useScrollReveal, useStaggeredScrollReveal } from '@/hooks/useScrollReveal';
+import MapComponent from './MapComponent';
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -20,6 +22,13 @@ const ContactSection = () => {
     projectType: '',
     message: ''
   });
+
+  // Scroll reveal hooks
+  const headerRef = useScrollReveal({ direction: 'up', delay: 100 });
+  const contactInfoRef = useStaggeredScrollReveal(4, { direction: 'left', delay: 200 });
+  const formRef = useScrollReveal({ direction: 'right', delay: 300 });
+  const mapRef = useScrollReveal({ direction: 'up', delay: 400 });
+  const emergencyRef = useScrollReveal({ direction: 'up', delay: 500 });
 
   const contactInfo = [
     {
@@ -104,7 +113,7 @@ const ContactSection = () => {
     <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <div ref={headerRef} className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             Get In <span className="text-primary">Touch</span>
           </h2>
@@ -117,14 +126,13 @@ const ContactSection = () => {
           {/* Contact Information */}
           <div className="lg:col-span-1">
             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-            <div className="space-y-6">
+            <div ref={contactInfoRef} className="space-y-6">
               {contactInfo.map((info, index) => {
                 const IconComponent = info.icon;
                 return (
                   <div 
                     key={info.title}
-                    className="flex items-start gap-4 animate-slide-up"
-                    style={{animationDelay: `${index * 0.1}s`}}
+                    className="flex items-start gap-4"
                   >
                     <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
                       <IconComponent className="h-6 w-6 text-primary" />
@@ -139,27 +147,19 @@ const ContactSection = () => {
               })}
             </div>
 
-            {/* Google Map */}
-            <div className="mt-8">
-              <div className="w-full h-48 bg-muted rounded-2xl overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.4820954287426!2d6.742639!3d6.210831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1043792aa9b9b9b9%3A0x9876543210987654!2sMR%20DGN%20Construction%20%26%20Developers%20Ltd%2C%20Okpanam%2C%20Delta%20State!5e0!3m2!1sen!2sng!4v1640000000000!5m2!1sen!2sng&q=MR+DGN+Construction+Developers+Ltd+Okpanam+Delta+State"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="MR DGN Construction & Developers Ltd Location"
-                  className="cursor-pointer hover:brightness-105 transition-all duration-300"
-                  onClick={() => window.open('https://maps.app.goo.gl/zMkaY1V3hjHanmns6', '_blank')}
-                />
-              </div>
+            {/* Enhanced Map */}
+            <div ref={mapRef} className="mt-8">
+              <MapComponent 
+                latitude={6.234213426630851} 
+                longitude={6.634045109032269}
+                companyName="MR DGN Construction & Developers Ltd"
+                address="Okpanam, Delta State, Nigeria"
+              />
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-2">
+          <div ref={formRef} className="lg:col-span-2">
             <Card className="card-elevated">
               <CardHeader>
                 <CardTitle className="text-2xl">Send Us A Message</CardTitle>
@@ -275,7 +275,7 @@ const ContactSection = () => {
         </div>
 
         {/* Emergency Contact */}
-        <div className="mt-16 text-center bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 text-white">
+        <div ref={emergencyRef} className="mt-16 text-center bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 text-white">
           <h3 className="text-2xl font-bold mb-2">Emergency Construction Services</h3>
           <p className="text-primary-foreground/90 mb-4">
             Available 24/7 for urgent construction and safety issues across Nigeria

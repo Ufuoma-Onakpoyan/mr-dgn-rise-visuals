@@ -3,9 +3,14 @@ import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import VideoModal from './VideoModal';
 import heroImage from '@/assets/hero-construction.jpg';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const HeroSection = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  
+  // Scroll reveal hooks
+  const textContentRef = useScrollReveal({ direction: 'left', delay: 200 });
+  const statsRef = useScrollReveal({ direction: 'right', delay: 400 });
 
   return (
     <>
@@ -28,14 +33,14 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 relative z-10 my-4 md:my-6 lg:my-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Text Content */}
-          <div className="text-white animate-slide-up px-2 sm:px-4 lg:px-0">
+          <div ref={textContentRef} className="text-white px-2 sm:px-4 lg:px-0">
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
-              Building the 
+              Building Nigeria's 
               <span className="text-gradient block">Future</span>
               Together
             </h1>
             <p className="text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 text-white/90 max-w-2xl">
-              MrDGN Constructions delivers excellence in every project. From high-rise buildings to infrastructure, we build with precision, safety, and innovation.
+              MR DGN Constructions delivers excellence across Nigeria. From Lagos to Abuja, we build with precision, safety, and innovation that meets international standards.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="btn-construction group">
@@ -55,7 +60,7 @@ const HeroSection = () => {
           </div>
 
           {/* Construction Stats */}
-          <div className="animate-scale-in px-2 sm:px-0">
+          <div ref={statsRef} className="px-2 sm:px-0">
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
               {/* Floating stats */}
               <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl animate-float">

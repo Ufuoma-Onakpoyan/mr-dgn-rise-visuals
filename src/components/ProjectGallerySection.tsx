@@ -8,20 +8,25 @@ import projectResidential from '@/assets/project-residential.jpg';
 import projectWarehouse from '@/assets/project-warehouse.jpg';
 import projectEducation from '@/assets/project-education.jpg';
 import projectHealthcare from '@/assets/project-healthcare.jpg';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const ProjectGallerySection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   
+  const headerRef = useScrollReveal({ direction: 'up', delay: 100 });
+  const carouselRef = useScrollReveal({ direction: 'up', delay: 200 });
+  const ctaRef = useScrollReveal({ direction: 'up', delay: 300 });
+  
   const projects = [
     {
       image: projectHighrise,
-      title: "Skyline Tower Complex",
-      description: "45-story mixed-use development"
+      title: "Lagos Skyline Tower Complex",
+      description: "45-story mixed-use development in Victoria Island"
     },
     {
       image: projectResidential,
       title: "Heritage Residential Community",
-      description: "Sustainable residential complex"
+      description: "Sustainable residential complex in Abuja"
     },
     {
       image: projectCommercial,
@@ -30,8 +35,8 @@ const ProjectGallerySection = () => {
     },
     {
       image: projectBridge,
-      title: "Metro Bridge Infrastructure",
-      description: "Critical transportation infrastructure"
+      title: "Third Mainland Bridge Extension",
+      description: "Critical transportation infrastructure for Lagos"
     },
     {
       image: projectWarehouse,
@@ -66,17 +71,17 @@ const ProjectGallerySection = () => {
   return (
     <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
+        <div ref={headerRef} className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Project <span className="text-gradient">Gallery</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore our portfolio of completed projects showcasing our expertise and commitment to excellence.
+            Explore our portfolio of completed projects across Nigeria showcasing our expertise and commitment to excellence.
           </p>
         </div>
 
         {/* Carousel Container */}
-        <div className="relative max-w-4xl mx-auto mb-8">
+        <div ref={carouselRef} className="relative max-w-4xl mx-auto mb-8">
           <div className="overflow-hidden rounded-lg shadow-lg">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
@@ -117,7 +122,7 @@ const ProjectGallerySection = () => {
           </div>
         </div>
 
-        <div className="text-center">
+        <div ref={ctaRef} className="text-center">
           <Button 
             size="lg" 
             className="btn-construction group"

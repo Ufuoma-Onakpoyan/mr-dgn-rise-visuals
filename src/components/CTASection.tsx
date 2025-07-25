@@ -26,11 +26,11 @@ const CTASection = () => {
             <div className="flex items-center gap-4 text-primary-foreground/90">
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                <span className="text-sm">Call: +1 (555) 123-4567</span>
+                <span className="text-sm">Call: +2348135324467</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
-                <span className="text-sm">info@mrdgnconstructions.com</span>
+                <span className="text-sm">constructions@mrdgngroup.com</span>
               </div>
             </div>
           </div>

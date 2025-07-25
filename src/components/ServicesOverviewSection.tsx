@@ -3,8 +3,13 @@ import { ArrowRight, Building, Hammer, Home, Wrench, Truck, Shield } from 'lucid
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import { useScrollReveal, useStaggeredScrollReveal } from '@/hooks/useScrollReveal';
 
 const ServicesOverviewSection = () => {
+  const headerRef = useScrollReveal({ direction: 'up', delay: 100 });
+  const servicesRef = useStaggeredScrollReveal(6, { direction: 'up', delay: 200 });
+  const ctaRef = useScrollReveal({ direction: 'up', delay: 300 });
+  
   const services = [
     {
       icon: Building,
@@ -41,16 +46,16 @@ const ServicesOverviewSection = () => {
   return (
     <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
+        <div ref={headerRef} className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Our <span className="text-gradient">Services</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive construction solutions tailored to meet your specific needs and requirements.
+            Comprehensive construction solutions tailored to meet your specific needs across Nigeria.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div ref={servicesRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {services.map((service, index) => (
             <Card key={index} className="card-elevated hover-lift">
               <CardHeader>
@@ -66,7 +71,7 @@ const ServicesOverviewSection = () => {
           ))}
         </div>
 
-        <div className="text-center">
+        <div ref={ctaRef} className="text-center">
           <Button asChild size="lg" variant="outline" className="btn-construction-outline group">
             <Link to="/our-services">
               View All Services

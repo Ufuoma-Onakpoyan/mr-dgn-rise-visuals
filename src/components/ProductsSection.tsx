@@ -3,13 +3,18 @@ import { ArrowRight, Package, Layers, Zap, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import { useScrollReveal, useStaggeredScrollReveal } from '@/hooks/useScrollReveal';
 
 const ProductsSection = () => {
+  const headerRef = useScrollReveal({ direction: 'up', delay: 100 });
+  const productsRef = useStaggeredScrollReveal(4, { direction: 'up', delay: 200 });
+  const ctaRef = useScrollReveal({ direction: 'up', delay: 300 });
+  
   const products = [
     {
       icon: Package,
       title: "High-Quality Solid Blocks",
-      description: "Durable concrete blocks perfect for structural and architectural applications. Available in various sizes and finishes."
+      description: "Durable concrete blocks perfect for Nigerian tropical climate. Available in various sizes and finishes that withstand heat and humidity."
     },
     {
       icon: Layers,
@@ -31,16 +36,16 @@ const ProductsSection = () => {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
+        <div ref={headerRef} className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Products & <span className="text-gradient">Materials</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Premium construction materials and products manufactured to the highest industry standards.
+            Premium construction materials manufactured to international standards and optimized for Nigerian conditions.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div ref={productsRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {products.map((product, index) => (
             <Card key={index} className="card-elevated hover-lift text-center">
               <CardHeader>
@@ -56,7 +61,7 @@ const ProductsSection = () => {
           ))}
         </div>
 
-        <div className="text-center">
+        <div ref={ctaRef} className="text-center">
           <Button asChild size="lg" className="btn-construction group">
             <Link to="/products">
               View More Products
